@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Survey of Crop Growth Monitoring System Using Image Processing and IOT</title>
+    
+    <!-- CSS Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px); /* Adjust for header height */
+            padding: 20px;
+            overflow: hidden; /* Ensure content doesn't overflow */
+        }
+
+        .pdf-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 1200px; /* Max width for large screens */
+            overflow: hidden;
+        }
+
+        iframe.pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transform: scale(1);
+            transform-origin: top left; /* Ensure scaling is from the top left */
+            overflow: auto; /* Enable scrolling if necessary */
+        }
+
+        .loading-message {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>A Survey of Crop Growth Monitoring System Using Image Processing and IOT Viewer</h1>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <div class="pdf-container">
+            <div class="loading-message" id="loadingMessage">Loading PDF...</div>
+            
+            <!-- Iframe for PDF -->
+            <iframe id="pdfIframe" class="pdf-iframe" src="" style="display: none;"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <!--<div class="footer">
+        <p>&copy; 2024 Your Company Name</p>
+    </div>-->
+
+    <!-- JavaScript Code -->
+    <script>
+        // PDF URL from Google Drive
+        const googleDrivePdfUrl = 'https://drive.google.com/file/d/1dYnFo6xEZL4jdD1JMTAx1oGnGsvPFaRC/preview';
+
+        // Function to load PDF into iframe
+        function loadPdf() {
+            const iframe = document.getElementById('pdfIframe');
+            const loadingMessage = document.getElementById('loadingMessage');
+
+            // Set iframe source to Google Drive PDF URL
+            iframe.src = googleDrivePdfUrl;
+
+            // Wait for the iframe to load, then hide the loading message
+            iframe.onload = function() {
+                loadingMessage.style.display = 'none';
+                iframe.style.display = 'block';
+            };
+        }
+
+        // Reload PDF (reset the iframe and reload)
+        function reloadPdf() {
+            const iframe = document.getElementById('pdfIframe');
+            const loadingMessage = document.getElementById('loadingMessage');
+
+            loadingMessage.style.display = 'block';
+            iframe.style.display = 'none';
+            iframe.src = ''; // Clear the iframe src
+            setTimeout(loadPdf, 500); // Reload PDF after a short delay
+        }
+
+        // Load the PDF when the page loads
+        window.onload = loadPdf;
+    </script>
+</body>
+</html>
